@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getTeams(res, mysql, context, complete){
-        mysql.pool.query("SELECT teamID as id, teamName FROM Teams", function(error, results, fields){
+        mysql.pool.query("SELECT teamID, teamName FROM Teams", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -14,7 +14,7 @@ module.exports = function(){
     }
 
     function getPlayer(res, mysql, context, complete){
-        mysql.pool.query("SELECT Players.playerID as playerID, height, weight, firstName, lastName, Teams.teamName AS team FROM Players INNER JOIN Teams ON team = Teams.teamID", function(error, results, fields){
+        mysql.pool.query("SELECT Players.playerID, height, weight, firstName, lastName, Teams.teamName FROM Players INNER JOIN Teams ON Players.teamID = Teams.teamID", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -25,7 +25,7 @@ module.exports = function(){
     }
 
     function getPlayerbyTeam(req, res, mysql, context, complete){
-      var query = "SELECT Players.playerID as playerID, height, weight, firstName, lastName, Teams.teamName AS team FROM Players INNER JOIN Teams ON team = Teams.teamID WHERE Players.team = ?";
+      var query = "SELECT Players.playerID, height, weight, firstName, lastName, Teams.teamName FROM Players INNER JOIN Teams ON Players.teamID = Teams.teamID WHERE Teams.teamName = ?";
       console.log(req.params)
       var inserts = [req.params.team]
       mysql.pool.query(query, inserts, function(error, results, fields){
@@ -41,7 +41,7 @@ module.exports = function(){
     /* Find players whose fname starts with a given string in the req */
     function getPlayerWithNameLike(req, res, mysql, context, complete) {
       //sanitize the input as well as include the % character
-       var query = "SELECT Players.playerID as id, height, weight, firstName, lastName, Teams.teamName AS team FROM Players INNER JOIN Teams ON team = Teams.teamID WHERE Players.firstName LIKE " + mysql.pool.escape(req.params.s + '%');
+       var query = "SELECT Players.playerID, height, weight, firstName, lastName, Teams.teamName FROM Players INNER JOIN Teams ON Players.teamID = Teams.teamID WHERE Players.firstName LIKE " + mysql.pool.escape(req.params.s + '%');
       console.log(query)
 
       mysql.pool.query(query, function(error, results, fields){
@@ -55,7 +55,7 @@ module.exports = function(){
     }
 
     function getPlayerbyID(res, mysql, context, id, complete){
-        var sql = "SELECT playerID as id, height, weight, firstName, lastName, teamID FROM Players WHERE playerID = ?";
+        var sql = "SELECT playerID, height, weight, firstName, lastName, teamID FROM Players WHERE playerID = ?";
         var inserts = [id];
         mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
