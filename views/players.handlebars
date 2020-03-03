@@ -1,0 +1,60 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<h3>Add new players:</h3>
+<form id="addplayer" action="/players" method="post">
+    FIX LATER <input type="text" name="firstName"><br>
+    Last name: <input type="text" name="lastName"><br>
+    Team: <select name="teams">
+        {{#each Teams}}
+        <option value="{{id}}">{{teamName}}</option>
+        {{/each}}
+    </select><br>
+    Age: <input type="number" name="age"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+<form id='filter_players' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by team </label>
+    <select id='team_filter' name="team">
+        {{#each Teams}}
+        <option value="{{id}}">{{teamName}}</option>
+        {{/each}}
+    </select><br>
+    <input type="button" value="Filter" onclick="filterPlayersByTeam()">
+</form>
+
+<form id='search_players' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search players for first name starting with:</label>
+    <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
+    <input type="button" value="Search" onclick="searchPlayersByFirstName()">
+</form>
+
+<h3>Current players:</h3>
+<table>
+    <thead>
+        <th>Height</th>
+        <th>Weight</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Team</th>
+    </thead> 
+    <tbody>
+        {{#each players}}
+        <tr> 
+            <td>{{height}}</td>
+            <td>{{weight}}</td>
+            <td>{{lastName}}</td>
+            <td>{{firstName}}</td>
+            <td>{{team}}</td>
+            <td><button onclick="deletePlayer({{id}})">Delete</button></td>
+            <td><a href="/players/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>

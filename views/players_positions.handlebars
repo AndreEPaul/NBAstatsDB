@@ -1,0 +1,44 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<div>
+<h3> Associate Positions with Players </h3>
+    <form id="add_players_positions" action="/players_positions" method="post">
+    Person: <select name='plID'>
+        {{#each players}}
+          <option value='{{plID}}'>{{firstName}} {{lastName}}</option>
+        {{/each}}
+    </select>
+    <br>
+    Positions:<sup>Multi-select</sup> <select multiple name="positions">
+        {{!-- We display title but the value that is submitted through the form is actually the certificate's id --}}
+        {{#each certificates}}
+        <option value="{{poID}}">{{positionName}}</option>
+        {{/each}}
+    </select><br>
+    <input type="submit" value="Submit">
+    </form>
+</div>
+<br/>
+<h3> List of Players with their Positions </h3>
+<table>
+    <thead> 
+        <th>Player</th>
+        <th>Position</th>
+    </thead> 
+    <tbody> 
+        {{#each players_positions}}
+        <tr> 
+            <td>{{lastName}}</td>
+            <td>{{positionName}}</td>
+            <td><button onclick="deletePlayers_Positions({{plID}},{{poID}})">Delete</button></td>
+            <td><a href='#' onclick='javascript: alert("You can implement it just like the Add form.")'>Update</a></td>
+        </tr>
+        {{else}}
+        <b> No players with any positions found! Grant some using the form. </b>
+        {{/each}} 
+
+    </tbody>
+</table> 
+</html>
