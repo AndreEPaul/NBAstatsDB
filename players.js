@@ -143,7 +143,7 @@ module.exports = function(){
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Players (height, weight, firstName, lastName, teamID) VALUES (?,?,?,?,?)";
-        var inserts = [req.body.height, req.body.weight, req.body.firstName, req.body.lastName, req.body.teamID];
+        var inserts = [req.body.height, req.body.weight, req.body.firstName, req.body.lastName, req.body.teams];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
