@@ -27,7 +27,7 @@ module.exports = function(){
     function getPlayerbyTeam(req, res, mysql, context, complete){
       var query = "SELECT Players.playerID, height, weight, firstName, lastName, Teams.teamName FROM Players INNER JOIN Teams ON Players.teamID = Teams.teamID WHERE Teams.teamName = ?";
       console.log(req.params)
-      var inserts = [req.params.team]
+      var inserts = [req.params.teams]
       mysql.pool.query(query, inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
