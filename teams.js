@@ -17,6 +17,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
+        context.jsscripts = ["deleteplayers.js","filterplayers.js","searchplayers.js"];
         var mysql = req.app.get('mysql');
         getTeams(res, mysql, context, complete);
         function complete(){
