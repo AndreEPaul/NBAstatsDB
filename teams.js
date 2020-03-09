@@ -28,9 +28,9 @@ module.exports = function(){
         }
     });
 
-    /* Adds a player, redirects to the players page after adding */
+    /* Adds a team, redirects to team page after adding */
     router.post('/', function(req, res){
-        console.log(req.body.team)
+        console.log(req.body.teams)
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Teams (teamName, homeCourt) VALUES (?,?)";
