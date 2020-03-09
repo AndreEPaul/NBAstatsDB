@@ -21,6 +21,7 @@ app.set('mysql', mysql);
 app.use('/players_positions', require('./players_positions.js'));
 app.use('/players', require('./players.js'));
 app.use('/teams', require('./teams.js'));
+app.use('/games', require('./games.js'));
 app.use('/', express.static('public'));
 
 app.use(function(req,res){

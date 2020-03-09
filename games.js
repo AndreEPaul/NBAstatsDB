@@ -29,15 +29,15 @@ module.exports = function(){
         console.log(req.body.games)
         console.log(req.body)
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO Teams (teamName, homeCourt) VALUES (?,?)";
-        var inserts = [req.body.teamName, req.body.homeCourt];
+        var sql = "INSERT INTO Games (date, location, team1Points, team2Points, team1ID, team2ID) VALUES (?,?,?,?,?,?)";
+        var inserts = [req.body.date, req.body.location, req.body.team1Points, req.body.team2Points, req.body.team1ID, req.body.team2ID];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.redirect('/teams');
+                res.redirect('/games');
             }
         });
     });

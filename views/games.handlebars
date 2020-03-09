@@ -1,0 +1,41 @@
+<html>
+{{#each foo}}
+    {{this}}
+{{/each}}
+<h3>Add new team:</h3>
+<form id="addgame" action="/games" method="post">
+    Date: <input type="date" name="date"><br>
+    Location: <input type="text" name="location"><br>
+    Team 1 Points: <input type="number" name="team1Points"><br>
+    Team 2 Points: <input type="number" name="team2Points"><br>
+    Team 1 ID: <input type="number" name="team1ID"><br>
+    Team 2 ID: <input type="number" name="team2ID"><br>
+    <br><br><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+
+<h3>Current games:</h3>
+<table>
+    <thead>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Team 1 Points</th>
+    <th>Team 2 Points</th>
+    <th>Team 1 ID</th>
+    <th>Team 2 ID</th>
+    </thead>
+    <tbody>
+    {{#each games}}
+        <tr>
+            <td>{{date}}</td>
+            <td>{{location}}</td>
+            <td>{{team1Points}}</td>
+            <td>{{team2Points}}</td>
+            <td>{{team1ID}}</td>
+            <td>{{team2ID}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+</html>
