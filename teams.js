@@ -21,12 +21,8 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         getTeams(res, mysql, context, complete);
         function complete(){
-            callbackCount++;
-            if(callbackCount >= 2){
                 res.render('teams', context);
             }
-
-        }
     });
 
     /* Adds a team, redirects to team page after adding */
