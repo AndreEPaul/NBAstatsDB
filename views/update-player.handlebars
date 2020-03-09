@@ -5,12 +5,20 @@
     Weight: <input type="text" name="weight" value="{{players.weight}}"><br>
     First name: <input type="text" name="firstName" value="{{players.firstName}}"><br>
     Last name: <input type="text" name="lastName" value="{{players.lastName}}"><br>
+
+    <!-- DEBUG
     Team: <select name="team" id="team-selector">
         {{#each teams}}
             <option value="{{id}}">{{teamName}}</option>
         {{/each}}
-    </select><br>
+    </select>
+    -->
+
+    TeamID: <input type="number" name="teamID" value="{{players.teamID}}">
+    <br>
 </form>
 <button onclick="updatePlayer({{players.id}})">Update</button>
+<!-- DEBUG
 <script defer>selectTeam({{players.team}});</script>
+-->
 </html>
