@@ -1,0 +1,26 @@
+<html>
+{{#each foo}}
+    {{this}}
+{{/each}}
+<h3>Add new :</h3>
+<form id="addposition" action="/position" method="post">
+    Position Name: <input type="text" name="positionName"><br>
+    <br><br><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+
+<h3>Current positions:</h3>
+<table>
+    <thead>
+    <th>Position Name</th>
+    </thead>
+    <tbody>
+    {{#each positions}}
+        <tr>
+            <td>{{positionName}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+</html>
