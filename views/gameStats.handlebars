@@ -1,1 +1,47 @@
+<html>
+{{#each foo}}
+    {{this}}
+{{/each}}
+<h3>Add new stats:</h3>
+<form id="addgameStats" action="/gameStats" method="post">
+    Points: <input type="number" name="points"><br>
+    Assists: <input type="number" name="assists"><br>
+    Rebounds: <input type="number" name="rebounds"><br>
+    Steals: <input type="number" name="steals"><br>
+    Blocks: <input type="number" name="blocks"><br>
+    +/- (Plus Minus): <input type="number" name="plusMinus"><br>
+    PlayerID (fix later): <input type="number" name="playerID"><br>
+    TeamID (fix later): <input type="number" name="teamID"><br>
+    <br><br><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
 
+<h3>Current Game Statistics:</h3>
+<table>
+    <thead>
+    <th>Points</th>
+    <th>Assists</th>
+    <th>Rebounds</th>
+    <th>Steals</th>
+    <th>Blocks</th>
+    <th>Plus Minus</th>
+    <th>Player ID</th>
+    <th>Game ID</th>
+    </thead>
+    <tbody>
+    {{#each gameStats}}
+        <tr>
+            <td>{{points}}</td>
+            <td>{{assists}}</td>
+            <td>{{rebounds}}</td>
+            <td>{{steals}}</td>
+            <td>{{blocks}}</td>
+            <td>{{plusMinus}}</td>           
+            <td>{{playerID}}</td>
+            <td>{{gameID}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+</html>
