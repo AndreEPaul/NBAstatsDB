@@ -2,7 +2,7 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
-    function getTeams(res, mysql, context, complete){
+    function getPositions(res, mysql, context, complete){
         mysql.pool.query("SELECT positionID, positionName FROM Positions", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
