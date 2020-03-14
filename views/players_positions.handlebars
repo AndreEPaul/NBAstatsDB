@@ -31,42 +31,32 @@
         </ul>
     </div>
 </nav>
-<h3> Associate Positions with Players </h3>
-    <form id="add_players_positions" action="/players_positions" method="post">
-    Person: <select name='plID'>
-        {{#each players}}
-          <option value='{{plID}}'>{{firstName}} {{lastName}}</option>
-        {{/each}}
-    </select>
-    <br>
-    Positions:<sup>Multi-select</sup> <select multiple name="positions">
-        {{!-- We display title but the value that is submitted through the form is actually the certificate's id --}}
-        {{#each certificates}}
-        <option value="{{poID}}">{{positionName}}</option>
-        {{/each}}
-    </select><br>
+<h3>Add new team:</h3>
+<form id="addgame" action="/games" method="post">
+    Date: <input type="date" name="date"><br>
+    Location: <input type="text" name="location"><br>
+    Team 1 Points: <input type="number" name="team1Points"><br>
+    Team 2 Points: <input type="number" name="team2Points"><br>
+    Team 1 ID: <input type="number" name="team1ID"><br>
+    Team 2 ID: <input type="number" name="team2ID"><br>
+    <br><br><br>
     <input type="submit" value="Submit">
-    </form>
-</div>
+</form>
 <br/>
-<h3> List of Players with their Positions </h3>
-<table>
-    <thead> 
-        <th>Player</th>
-        <th>Position</th>
-    </thead> 
-    <tbody> 
-        {{#each players_positions}}
-        <tr> 
-            <td>{{lastName}}</td>
-            <td>{{positionName}}</td>
-            <td><button onclick="deletePlayers_Positions({{plID}},{{poID}})">Delete</button></td>
-            <td><a href='#' onclick='javascript: alert("You can implement it just like the Add form.")'>Update</a></td>
-        </tr>
-        {{else}}
-        <b> No players with any positions found! Grant some using the form. </b>
-        {{/each}} 
 
+<h3>Current Players - Positions:</h3>
+<table>
+    <thead>
+    <th>Player ID</th>
+    <th>Position ID</th>
+    </thead>
+    <tbody>
+    {{#each players_positions}}
+        <tr>
+            <td>{{plID}}</td>
+            <td>{{poID}}</td>
+        </tr>
+    {{/each}}
     </tbody>
-</table> 
+</table>
 </html>
