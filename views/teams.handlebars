@@ -2,6 +2,35 @@
 {{#each foo}}
     {{this}}
 {{/each}}
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand" href="./public/index.html"><b><u>DataGorge</u></b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNBAnavbar" aria-controls="myNBAnavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="myNBAnavbar">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/players"><b>Players</b></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/teams"><b>Teams <span class="sr-only">(current)</span></b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gamestats"><b>Statistics </b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/games"><b>Games</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/positions"><b>Positions</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/players_positions"><b>Players_Positions</b></a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <h3>Add new team:</h3>
 <form id="addteam" action="/teams" method="post">
     Team Name: <input type="text" name="teamName"><br>
