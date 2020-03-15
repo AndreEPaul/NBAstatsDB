@@ -43,10 +43,14 @@ module.exports = function(){
 
 
     // Delete from player_position
-    router.get('/delete/plID/:plID/poID/:poID',function(req,res,next){
+    router.get('/delete',function(req,res,next){
         var context = {};
+        var qParams = [];
+        for(var p in req.query){
+            qParams.push(req.query[p]);
+        }
         mysql.pool.query("DELETE FROM Players_Positions WHERE plID=? AND poID=?",
-            [req.query.plID, req.query.poID],
+            qParams,
             function(err, result){
                 if(err){
                     next(err);
