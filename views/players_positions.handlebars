@@ -2,43 +2,57 @@
 {{#each foo}}
 {{this}}
 {{/each}}
-<div>
-<h3> Associate Positions with Players </h3>
-    <form id="add_players_positions" action="/players_positions" method="post">
-    Person: <select name='plID'>
-        {{#each players}}
-          <option value='{{plID}}'>{{firstName}} {{lastName}}</option>
-        {{/each}}
-    </select>
-    <br>
-    Positions:<sup>Multi-select</sup> <select multiple name="positions">
-        {{!-- We display title but the value that is submitted through the form is actually the certificate's id --}}
-        {{#each certificates}}
-        <option value="{{poID}}">{{positionName}}</option>
-        {{/each}}
-    </select><br>
-    <input type="submit" value="Submit">
-    </form>
-</div>
-<br/>
-<h3> List of Players with their Positions </h3>
-<table>
-    <thead> 
-        <th>Player</th>
-        <th>Position</th>
-    </thead> 
-    <tbody> 
-        {{#each players_positions}}
-        <tr> 
-            <td>{{lastName}}</td>
-            <td>{{positionName}}</td>
-            <td><button onclick="deletePlayers_Positions({{plID}},{{poID}})">Delete</button></td>
-            <td><a href='#' onclick='javascript: alert("You can implement it just like the Add form.")'>Update</a></td>
-        </tr>
-        {{else}}
-        <b> No players with any positions found! Grant some using the form. </b>
-        {{/each}} 
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand" href="./public/index.html"><b><u>DataGorge</u></b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNBAnavbar" aria-controls="myNBAnavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="myNBAnavbar">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/players"><b>Players</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/teams"><b>Teams </b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gamestats"><b>Statistics </b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/games"><b>Games</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/positions"><b>Positions </b></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/players_positions"><b>Players_Positions <span class="sr-only">(current)</span></b></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<h3>Add new relationship:</h3>
+<form id="addplayers_positions" action="/players_positions" method="post">
+    Player ID: <input type="number" name="plID"><br>
+    Position ID: <input type="number" name="poID">
+    <br><br><br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+
+<h3>Current Players - Positions:</h3>
+<table>
+    <thead>
+    <th>Player ID</th>
+    <th>Position ID</th>
+    </thead>
+    <tbody>
+    {{#each players_positions}}
+        <tr>
+            <td>{{plID}}</td>
+            <td>{{poID}}</td>
+        </tr>
+    {{/each}}
     </tbody>
-</table> 
+</table>
 </html>
