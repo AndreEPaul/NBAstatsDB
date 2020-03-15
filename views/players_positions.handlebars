@@ -41,7 +41,7 @@
 <br/>
 
 <h3>Current Players - Positions:</h3>
-<table>
+<table id="play_pos_table">
     <thead>
     <th>Player ID</th>
     <th>Position ID</th>
@@ -51,6 +51,7 @@
         <tr>
             <td>{{plID}}</td>
             <td>{{poID}}</td>
+            <td><input type="button" value="Delete" id="delete" onclick="deleteResult({{plID}}, {{poID}})"></td>
         </tr>
     {{/each}}
     </tbody>
