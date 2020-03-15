@@ -8,7 +8,7 @@ function deleteResult(plID, poID){
     }
 
     var req = new XMLHttpRequest();
-    req.open("GET", "delete?id=" + keyID, true);
+    req.open("GET", "delete?plID=" + plID + "&poID=" + poID, true);
 
     req.addEventListener("load",function(){
         if(req.status >= 200 && req.status < 400){
