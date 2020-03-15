@@ -61,7 +61,7 @@
                     }
 
                     var req = new XMLHttpRequest();
-                    req.open('GET', 'delete?plID=' + plID + '&poID=' + poID, true);
+                    req.open('GET', '/delete/plID/' + plID + '/poID/' + poID, true);
 
                     req.addEventListener('load',function(){
                         if(req.status >= 200 && req.status < 400){
@@ -69,7 +69,7 @@
                         } else {
                              console.log('Error in network request: ' + req.statusText);
                              if(req.statusText === 'Not Found'){
-                              alert('Error not found');
+                              alert('Error: not found');
                              }
                         }
                     });
