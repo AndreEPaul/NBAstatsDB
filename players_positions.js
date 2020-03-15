@@ -42,7 +42,7 @@ module.exports = function(){
     });
 
     // Delete from player_position
-    app.get('/delete',function(req,res,next){
+    router.get('/delete',function(req,res,next){
         var context = {};
         mysql.pool.query("DELETE FROM Players_Positions WHERE (plID=? AND poID=?)",
             [req.query.plID, req.query.poID],
