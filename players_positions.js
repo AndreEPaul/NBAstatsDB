@@ -41,6 +41,7 @@ module.exports = function(){
         });
     });
 
+
     // Delete from player_position
     router.get('/delete',function(req,res,next){
         var context = {};
