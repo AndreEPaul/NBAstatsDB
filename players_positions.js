@@ -43,9 +43,11 @@ module.exports = function(){
     });
 
     router.delete('/plID/:plID/poID/:poID', function(req, res){
+        /* for debugging.
         console.log(req);
         console.log(req.params.plID);
         console.log(req.params.poID);
+         */
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM Players_Positions WHERE plID = ? AND poID = ?";
         var inserts = [req.params.plID, req.params.poID];
