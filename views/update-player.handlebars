@@ -1,24 +1,24 @@
 <html>
-<h1>Update {{players.firstName}} {{players.lastName}}:</h1>
-<form id="update-player" action="/players" method="post">
-    Height: <input type="text" name="height" value="{{players.height}}"><br>
-    Weight: <input type="text" name="weight" value="{{players.weight}}"><br>
-    First name: <input type="text" name="firstName" value="{{players.firstName}}"><br>
-    Last name: <input type="text" name="lastName" value="{{players.lastName}}"><br>
+<h1>Update {{Players.firstName}} {{Players.lastName}}:</h1>
+<form id="update-player" action="/Players" method="post">
+    Height: <input type="text" name="height" value="{{Players.height}}"><br>
+    Weight: <input type="text" name="weight" value="{{Players.weight}}"><br>
+    First name: <input type="text" name="firstName" value="{{Players.firstName}}"><br>
+    Last name: <input type="text" name="lastName" value="{{Players.lastName}}"><br>
 
     <!-- DEBUG
     Team: <select name="team" id="team-selector">
         {{#each teams}}
-            <option value="{{id}}">{{teamName}}</option>
+            <option value="{{teamID}}">{{teamName}}</option>
         {{/each}}
     </select>
     -->
 
-    TeamID: <input type="number" name="teamID" value="{{players.teamID}}">
+    TeamID: <input type="number" name="teamID" value="{{Players.teamID}}">
     <br>
 </form>
-<button onclick="updatePlayer({{players.id}})">Update</button>
+<button onclick="updatePlayer({{Players.playerID}})">Update</button>
 <!-- DEBUG
-<script defer>selectTeam({{players.team}});</script>
+<script defer>selectTeam({{Players.team}});</script>
 -->
 </html>

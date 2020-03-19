@@ -40,7 +40,7 @@
     TeamID (fix later): <input type="number" name="teamID">
 <!--    Team: <select name="teams">
         {{#each teams}}
-        <option value="{{id}}">{{teamName}}</option>
+        <option value="{{teamID}}">{{teamName}}</option>
         {{/each}}
     </select>
 -->
@@ -54,7 +54,7 @@
     <label> Filter by team </label>
     <select id='team_filter' name="team">
         {{#each teams}}
-        <option value="{{id}}">{{teamName}}</option>
+        <option value="{{teamID}}">{{teamName}}</option>
         {{/each}}
     </select><br>
     <input type="button" value="Filter" onclick="filterPlayersByTeam()">
@@ -84,8 +84,7 @@
             <td>{{lastName}}</td>
             <td>{{firstName}}</td>
             <td>{{teamID}}</td>
-            <td><button onclick="deletePlayer({{id}})">Delete</button></td>
-            <td><a href="/players/{{id}}">Update</a></td>
+            <td><a href="/players/{{playerID}}">Update</a></td>
         </tr> 
         {{/each}} 
     </tbody> 

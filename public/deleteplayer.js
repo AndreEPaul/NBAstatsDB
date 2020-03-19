@@ -1,13 +1,3 @@
-function deletePlayer(id){
-    $.ajax({
-        url: '/players/' + id,
-        type: 'DELETE',
-        success: function(result){
-            window.location.reload(true);
-        }
-    })
-};
-
 function deletePlayers_Positions(plID, poID){
   $.ajax({
       url: '/players_positions/plID/' + plID + '/poID/' + poID,
