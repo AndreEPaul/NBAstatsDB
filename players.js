@@ -155,8 +155,26 @@ module.exports = function(){
         });
     });
 
-    /* The URI that update data is sent to in order to update a player */
+    router.update('/players/height/:height/weight/:weight/firstName/:firstName/lastName/:lastName/teamID/:teamID/playerID/:playerID', function(req, res){
+        /* for debugging.
+        console.log(req);
+         */
+        var mysql = req.app.get('mysql');
+        var sql = "UPDATE Players SET height=?, weight=?, firstName=?, lastName=?, teamID=? WHERE playerID=?";
+        var inserts = [req.params.height, req.params.weight, req.params.firstName, req.params.lastName, req.params.teamID, req.params.playerID];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            }else{
+                res.status(202).end();
+            }
+        })
+    });
 
+    /* The URI that update data is sent to in order to update a player */
+/*
     router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)
@@ -175,23 +193,6 @@ module.exports = function(){
         });
     });
 
-    /* Route to delete a player, simply returns a 202 upon success. Ajax will handle this. */
-
-    router.delete('/:id', function(req, res){
-        var mysql = req.app.get('mysql');
-        var sql = "DELETE FROM Players WHERE playerID = ?";
-        var inserts = [req.params.id];
-        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
-            if(error){
-                console.log(error)
-                res.write(JSON.stringify(error));
-                res.status(400);
-                res.end();
-            }else{
-                res.status(202).end();
-            }
-        })
-    })
-
+*/
     return router;
 }();

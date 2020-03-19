@@ -37,20 +37,18 @@
     Weight: <input type="text" name="weight"><br>
     Last name: <input type="text" name="firstName"><br>
     First name: <input type="text" name="lastName"><br>
-    TeamID (fix later): <input type="number" name="teamID">
-<!--    Team: <select name="teams">
+    TeamID (input manually, selecting from dropdown doesn't work): <input type="number" name="teamID">
+    Team (showing filter functionality, selection doesn't work): <select name="teams">
         {{#each teams}}
         <option value="{{teamID}}">{{teamName}}</option>
         {{/each}}
     </select>
--->
     <br><br><br>
     <input type="submit" value="Submit">
  </form>
 <br/>
-
+<!-- Doesn't work.
 <form id='filter_players' action='' method=''>
-<!--- this form does not submit directly, the button handles all the interaction with backend -->
     <label> Filter by team </label>
     <select id='team_filter' name="team">
         {{#each teams}}
@@ -59,6 +57,7 @@
     </select><br>
     <input type="button" value="Filter" onclick="filterPlayersByTeam()">
 </form>
+-->
 
 <form id='search_players' action='' method=''>
 <!--- this form does not submit directly, the button handles all the interaction with backend -->
@@ -67,7 +66,7 @@
     <input type="button" value="Search" onclick="searchPlayersByFirstName()">
 </form>
 
-<h3>Current players:</h3>
+<h3>Table for viewing:</h3>
 <table>
     <thead>
         <th>Height</th>
@@ -83,10 +82,21 @@
             <td>{{weight}}</td>
             <td>{{lastName}}</td>
             <td>{{firstName}}</td>
-            <td>{{teamID}}</td>
-            <td><a href="/players/{{playerID}}">Update</a></td>
-        </tr> 
+            <td>{{teamName}}</td>
+        </tr>
         {{/each}} 
     </tbody> 
-</table> 
+</table>
+
+<h3>Update players</h3>
+<form id="updateplayer" action="/players" method="get">
+    Height: <input id="upHeight" type="text" name="height"><br>
+    Weight: <input id="upWeight" type="text" name="weight"><br>
+    Last name: <input id="upLname" type="text" name="firstName"><br>
+    First name: <input id="upFname" type="text" name="lastName"><br>
+    TeamID (input manually, selecting from dropdown doesn't work): <input id="upTeamID" type="number" name="teamID">
+    PlayerID (input manually) <input id="upPlayerID" type="number" name="playerID">
+    <br><br><br>
+    <input type="submit" value="UPDATE" onclick="newUpdatePlayer()">
+</form>
 </html>
