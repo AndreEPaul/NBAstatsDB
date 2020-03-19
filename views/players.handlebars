@@ -32,7 +32,7 @@
     </div>
 </nav>
 <h3>Add new players:</h3>
-<form id="addplayer" action="/players" method="post">
+<form id="addplayer" action="/addplayers" method="post">
     Height: <input type="text" name="addheight"><br>
     Weight: <input type="text" name="addweight"><br>
     Last name: <input type="text" name="addfirstName"><br>
@@ -90,13 +90,13 @@
 </table>
 
 <h3>Update players</h3>
-<form id="updateplayer" action="/players" method="post">
-    Height: <input id="upHeight" type="text" name="upheight"><br>
-    Weight: <input id="upWeight" type="text" name="upweight"><br>
-    Last name: <input id="upLname" type="text" name="upfirstName"><br>
-    First name: <input id="upFname" type="text" name="uplastName"><br>
-    TeamID (input manually, selecting from dropdown doesn't work): <input id="upTeamID" type="number" name="upteamID"><br>
-    PlayerID (input manually) <input id="upPlayerID" type="number" name="upplayerID">
+<form id="updateplayer" action="/updateplayers" method="post">
+    Height: <input type="text" name="upheight"><br>
+    Weight: <input type="text" name="upweight"><br>
+    Last name: <input type="text" name="upfirstName"><br>
+    First name: <input type="text" name="uplastName"><br>
+    TeamID (input manually, selecting from dropdown doesn't work): <input type="number" name="upteamID"><br>
+    PlayerID (input manually) <input type="number" name="upplayerID">
     <br><br><br>
     <input type="submit" value="Submit">
 </form>

@@ -138,7 +138,7 @@ module.exports = function(){
 
     /* Adds a player, redirects to the players page after adding */
 
-    router.post('/', function(req, res){
+    router.post('/addplayers', function(req, res){
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Players (height, weight, firstName, lastName, teamID) VALUES (?,?,?,?,?)";
@@ -154,7 +154,8 @@ module.exports = function(){
         });
     });
 
-    router.post('/', function(req, res){
+    /* update? */
+    router.post('/updateplayers', function(req, res){
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "UPDATE Players SET height=?, weight=?, firstName=?, lastName=?, teamID=? WHERE playerID=?";
