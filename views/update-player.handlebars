@@ -1,24 +1,68 @@
 <html>
-<h1>Update {{Players.firstName}} {{Players.lastName}}:</h1>
-<form id="update-player" action="/Players" method="post">
-    Height: <input type="text" name="height" value="{{Players.height}}"><br>
-    Weight: <input type="text" name="weight" value="{{Players.weight}}"><br>
-    First name: <input type="text" name="firstName" value="{{Players.firstName}}"><br>
-    Last name: <input type="text" name="lastName" value="{{Players.lastName}}"><br>
+{{#each foo}}
+    {{this}}
+{{/each}}
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand" href="/index.html"><b><u>DataGorge</u></b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNBAnavbar" aria-controls="myNBAnavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <!-- DEBUG
-    Team: <select name="team" id="team-selector">
-        {{#each teams}}
-            <option value="{{teamID}}">{{teamName}}</option>
-        {{/each}}
-    </select>
-    -->
+    <div class="collapse navbar-collapse" id="myNBAnavbar">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/players"><b>Players <span class="sr-only">(current)</span></b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/teams"><b>Teams </b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gamestats"><b>Statistics </b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/games"><b>Games </b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/positions"><b>Positions </b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/players_positions"><b>Players_Positions</b></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<h3>Table for viewing:</h3>
+<table>
+    <thead>
+    <th>Height</th>
+    <th>Weight</th>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Team</th>
+    </thead>
+    <tbody>
+    {{#each players}}
+        <tr>
+            <td>{{height}}</td>
+            <td>{{weight}}</td>
+            <td>{{lastName}}</td>
+            <td>{{firstName}}</td>
+            <td>{{teamName}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
 
-    TeamID: <input type="number" name="teamID" value="{{Players.teamID}}">
-    <br>
+<h3>Update players</h3>
+<form id="updateplayer" action="/updateplayers" method="post">
+    Height: <input type="text" name="upheight"><br>
+    Weight: <input type="text" name="upweight"><br>
+    Last name: <input type="text" name="upfirstName"><br>
+    First name: <input type="text" name="uplastName"><br>
+    TeamID (input manually, selecting from dropdown doesn't work): <input type="number" name="upteamID"><br>
+    PlayerID (input manually) <input type="number" name="upplayerID">
+    <br><br><br>
+    <input type="submit" value="Submit">
 </form>
-<button onclick="updatePlayer({{Players.playerID}})">Update</button>
-<!-- DEBUG
-<script defer>selectTeam({{Players.team}});</script>
--->
 </html>
+

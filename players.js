@@ -172,7 +172,7 @@ module.exports = function(){
 
     /* Adds a player, redirects to the players page after adding */
 
-    router.post('/addplayers', function(req, res){
+    router.post('/', function(req, res){
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Players (height, weight, firstName, lastName, teamID) VALUES (?,?,?,?,?)";
