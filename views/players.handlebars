@@ -37,13 +37,14 @@
     Weight: <input type="text" name="weight"><br>
     Last name: <input type="text" name="firstName"><br>
     First name: <input type="text" name="lastName"><br>
-    TeamID (fix later): <input type="number" name="teamID">
-<!--    Team: <select name="teams">
+<!--
+TeamID (fix later): <input type="number" name="teamID">
+-->
+    Team: <select name="teamName">
         {{#each teams}}
         <option value="{{id}}">{{teamName}}</option>
         {{/each}}
     </select>
--->
     <br><br><br>
     <input type="submit" value="Submit">
  </form>
@@ -83,7 +84,7 @@
             <td>{{weight}}</td>
             <td>{{lastName}}</td>
             <td>{{firstName}}</td>
-            <td>{{teamID}}</td>
+            <td>{{teamName}}</td>
             <td><button onclick="deletePlayer({{id}})">Delete</button></td>
             <td><a href="/players/{{id}}">Update</a></td>
         </tr> 

@@ -25,7 +25,7 @@ module.exports = function(){
     }
 
     function getPlayerbyTeam(req, res, mysql, context, complete){
-      var query = "SELECT Players.playerID, height, weight, firstName, lastName, Teams.teamName FROM Players INNER JOIN Teams ON Players.teamID = Teams.teamID WHERE Teams.teamName = ?";
+      var query = "SELECT Players.playerID, height, weight, firstName, lastName, teamName FROM Players INNER JOIN Teams ON Players.teamID = Teams.teamID WHERE Teams.teamName = ?";
       console.log(req.params)
       var inserts = [req.params.teams]
       mysql.pool.query(query, inserts, function(error, results, fields){
@@ -41,7 +41,7 @@ module.exports = function(){
     /* Find players whose fname starts with a given string in the req */
     function getPlayerWithNameLike(req, res, mysql, context, complete) {
       //sanitize the input as well as include the % character
-       var query = "SELECT Players.playerID, height, weight, firstName, lastName, Teams.teamName FROM Players INNER JOIN Teams ON Players.teamID = Teams.teamID WHERE Players.firstName LIKE " + mysql.pool.escape(req.params.s + '%');
+       var query = "SELECT Players.playerID, height, weight, firstName, lastName, teamName FROM Players INNER JOIN Teams ON Players.teamID = Teams.teamID WHERE Players.firstName LIKE " + mysql.pool.escape(req.params.s + '%');
       console.log(query)
 
       mysql.pool.query(query, function(error, results, fields){
@@ -143,7 +143,7 @@ module.exports = function(){
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Players (height, weight, firstName, lastName, teamID) VALUES (?,?,?,?,?)";
-        var inserts = [req.body.height, req.body.weight, req.body.firstName, req.body.lastName, req.body.teamID];
+        var inserts = [req.body.height, req.body.weight, req.body.firstName, req.body.lastName, req.body.teamName.value];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
