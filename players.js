@@ -156,13 +156,12 @@ module.exports = function(){
     });
 
     router.get('/players', function(req, res){
-        /* for debugging.
         console.log(req);
-         */
+
         var mysql = req.app.get('mysql');
         var sql = "UPDATE Players SET height=?, weight=?, firstName=?, lastName=?, teamID=? WHERE playerID=?";
         var inserts = [req.query.height, req.query.weight, req.query.firstName, req.query.lastName, req.query.teamID, req.query.playerID];
-        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+        mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.status(400);
