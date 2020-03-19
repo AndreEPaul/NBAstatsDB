@@ -85,6 +85,40 @@ module.exports = function(){
         }
     });
 
+    // Need other routes for other forms.
+    router.get('/updateplayer', function(req, res){
+        var callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["deleteplayers.js","filterplayers.js","searchplayers.js"];
+        var mysql = req.app.get('mysql');
+        getPlayer(res, mysql, context, complete);
+        getTeams(res, mysql, context, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 2){
+                res.render('players', context);
+            }
+
+        }
+    });
+
+    // Need other routes for other forms.
+    router.get('/addplayer', function(req, res){
+        var callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["deleteplayers.js","filterplayers.js","searchplayers.js"];
+        var mysql = req.app.get('mysql');
+        getPlayer(res, mysql, context, complete);
+        getTeams(res, mysql, context, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 2){
+                res.render('players', context);
+            }
+
+        }
+    });
+
     /*Display all players from a given team. Requires web based javascript to delete users with AJAX*/
     router.get('/filter/:team', function(req, res){
         var callbackCount = 0;
