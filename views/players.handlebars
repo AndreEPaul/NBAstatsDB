@@ -37,8 +37,9 @@
     Weight: <input type="text" name="weight"><br>
     Last name: <input type="text" name="firstName"><br>
     First name: <input type="text" name="lastName"><br>
-    TeamID (input manually, selecting from dropdown doesn't work): <input type="number" name="teamID">
-    Team (showing filter functionality, selection doesn't work): <select name="teams">
+    TeamID (input manually, selecting from dropdown doesn't work): <input type="number" name="teamID"><br>
+
+    Team (this is ONLY to show filter functionality, selection doesn't work): <select name="teams">
         {{#each teams}}
         <option value="{{teamID}}">{{teamName}}</option>
         {{/each}}
@@ -94,7 +95,7 @@
     Weight: <input id="upWeight" type="text" name="weight"><br>
     Last name: <input id="upLname" type="text" name="firstName"><br>
     First name: <input id="upFname" type="text" name="lastName"><br>
-    TeamID (input manually, selecting from dropdown doesn't work): <input id="upTeamID" type="number" name="teamID">
+    TeamID (input manually, selecting from dropdown doesn't work): <input id="upTeamID" type="number" name="teamID"><br>
     PlayerID (input manually) <input id="upPlayerID" type="number" name="playerID">
     <br><br><br>
     <input type="submit" value="UPDATE" onclick="newUpdatePlayer()">
