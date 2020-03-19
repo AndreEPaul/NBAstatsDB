@@ -24,6 +24,7 @@ app.use('/players', require('./players.js'));
 app.use('/teams', require('./teams.js'));
 app.use('/games', require('./games.js'));
 app.use('/gameStats', require('./gameStats.js'));
+app.use('/update-player', require('./update-player.js'))
 app.use('/', express.static('public'));
 
 app.use(function(req,res){
