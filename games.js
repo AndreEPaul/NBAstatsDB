@@ -26,8 +26,6 @@ module.exports = function(){
 
     /* Adds a game, redirects to game page after adding */
     router.post('/', function(req, res){
-        console.log(req.body.games)
-        console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Games (date, location, team1Points, team2Points, team1ID, team2ID) VALUES (?,?,?,?,?,?)";
         var inserts = [req.body.date, req.body.location, req.body.team1Points, req.body.team2Points, req.body.team1ID, req.body.team2ID];

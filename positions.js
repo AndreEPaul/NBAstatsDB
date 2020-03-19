@@ -25,8 +25,6 @@ module.exports = function(){
 
     /* Adds a position, redirects to position page after adding */
     router.post('/', function(req, res){
-        console.log(req.body.positions)
-        console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Positions (positionName) VALUES (?)";
         var inserts = [req.body.positionName];

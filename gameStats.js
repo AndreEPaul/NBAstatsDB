@@ -25,8 +25,6 @@ module.exports = function(){
 
     /* Adds a gamestats, redirects to gamestats page after adding */
     router.post('/', function(req, res){
-        console.log(req.body.gameStats)
-        console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO GameStatistics (points, assists, rebounds, steals, blocks, plusMinus, playerID, gameID) VALUES (?,?,?,?,?,?,?,?)";
         var inserts = [req.body.points, req.body.assists, req.body.rebounds, req.body.steals, req.body.blocks, req.body.plusMinus, req.body.playerID, req.body.gameID];

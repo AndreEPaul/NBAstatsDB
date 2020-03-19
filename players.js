@@ -139,11 +139,10 @@ module.exports = function(){
     /* Adds a player, redirects to the players page after adding */
 
     router.post('/', function(req, res){
-        console.log(req.body.team)
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Players (height, weight, firstName, lastName, teamID) VALUES (?,?,?,?,?)";
-        var inserts = [req.body.height, req.body.weight, req.body.firstName, req.body.lastName, req.body.teamID];
+        var inserts = [req.body.addheight, req.body.addweight, req.body.addfirstName, req.body.addlastName, req.body.addteamID];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -155,21 +154,20 @@ module.exports = function(){
         });
     });
 
-    router.get('/upd_players', function(req, res){
-        console.log(req);
-
+    router.post('/', function(req, res){
+        console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "UPDATE Players SET height=?, weight=?, firstName=?, lastName=?, teamID=? WHERE playerID=?";
-        var inserts = [req.query.height, req.query.weight, req.query.firstName, req.query.lastName, req.query.teamID, req.query.playerID];
-        mysql.pool.query(sql, inserts, function(error, results, fields){
+        var inserts = [req.body.upheight, req.body.upweight, req.body.upfirstName, req.body.uplastName, req.body.upteamID, req.body.upplayerID];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
+                console.log(JSON.stringify(error))
                 res.write(JSON.stringify(error));
-                res.status(400);
                 res.end();
             }else{
-                res.status(202).end();
+                res.redirect('/players');
             }
-        })
+        });
     });
 
     /* The URI that update data is sent to in order to update a player */

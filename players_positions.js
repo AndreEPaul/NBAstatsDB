@@ -26,8 +26,6 @@ module.exports = function(){
 
     /* Adds a players_position M:M relationship, redirects to players_positions page after adding */
     router.post('/', function(req, res){
-        console.log(req.body.players_positions)
-        console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Players_Positions (plID, poID) VALUES (?,?)";
         var inserts = [req.body.plID, req.body.poID];
