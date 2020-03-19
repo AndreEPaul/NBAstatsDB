@@ -68,42 +68,7 @@ module.exports = function(){
     }
 
     /*Display all players. Requires web based javascript to delete users with AJAX*/
-
     router.get('/', function(req, res){
-        var callbackCount = 0;
-        var context = {};
-        context.jsscripts = ["deleteplayers.js","filterplayers.js","searchplayers.js"];
-        var mysql = req.app.get('mysql');
-        getPlayer(res, mysql, context, complete);
-        getTeams(res, mysql, context, complete);
-        function complete(){
-            callbackCount++;
-            if(callbackCount >= 2){
-                res.render('players', context);
-            }
-
-        }
-    });
-
-    // Need other routes for other forms.
-    router.get('/updateplayer', function(req, res){
-        var callbackCount = 0;
-        var context = {};
-        context.jsscripts = ["deleteplayers.js","filterplayers.js","searchplayers.js"];
-        var mysql = req.app.get('mysql');
-        getPlayer(res, mysql, context, complete);
-        getTeams(res, mysql, context, complete);
-        function complete(){
-            callbackCount++;
-            if(callbackCount >= 2){
-                res.render('players', context);
-            }
-
-        }
-    });
-
-    // Need other routes for other forms.
-    router.get('/addplayer', function(req, res){
         var callbackCount = 0;
         var context = {};
         context.jsscripts = ["deleteplayers.js","filterplayers.js","searchplayers.js"];
@@ -177,23 +142,6 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Players (height, weight, firstName, lastName, teamID) VALUES (?,?,?,?,?)";
         var inserts = [req.body.addheight, req.body.addweight, req.body.addfirstName, req.body.addlastName, req.body.addteamID];
-        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-            if(error){
-                console.log(JSON.stringify(error))
-                res.write(JSON.stringify(error));
-                res.end();
-            }else{
-                res.redirect('/players');
-            }
-        });
-    });
-
-    /* update? */
-    router.post('/updateplayers', function(req, res){
-        console.log(req.body)
-        var mysql = req.app.get('mysql');
-        var sql = "UPDATE Players SET height=?, weight=?, firstName=?, lastName=?, teamID=? WHERE playerID=?";
-        var inserts = [req.body.upheight, req.body.upweight, req.body.upfirstName, req.body.uplastName, req.body.upteamID, req.body.upplayerID];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
