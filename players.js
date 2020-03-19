@@ -155,7 +155,7 @@ module.exports = function(){
         });
     });
 
-    router.update('/players/height/:height/weight/:weight/firstName/:firstName/lastName/:lastName/teamID/:teamID/playerID/:playerID', function(req, res){
+    router.get('/players/height/:height/weight/:weight/firstName/:firstName/lastName/:lastName/teamID/:teamID/playerID/:playerID', function(req, res){
         /* for debugging.
         console.log(req);
          */
