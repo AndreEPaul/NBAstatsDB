@@ -155,7 +155,7 @@ module.exports = function(){
         });
     });
 
-    router.get('/players', function(req, res){
+    router.get('/upd_players', function(req, res){
         console.log(req);
 
         var mysql = req.app.get('mysql');

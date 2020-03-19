@@ -10,6 +10,8 @@ function updatePlayer(id){
     })
 };
 */
+
+/*
 function newUpdatePlayer(){
     var height = document.getElementById('upHeight');
     var weight = document.getElementById('upWeight');
@@ -30,3 +32,4 @@ function newUpdatePlayer(){
         }
     })
 };
+*/
