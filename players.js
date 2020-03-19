@@ -161,7 +161,7 @@ module.exports = function(){
          */
         var mysql = req.app.get('mysql');
         var sql = "UPDATE Players SET height=?, weight=?, firstName=?, lastName=?, teamID=? WHERE playerID=?";
-        var inserts = [req.params.height, req.params.weight, req.params.firstName, req.params.lastName, req.params.teamID, req.params.playerID];
+        var inserts = [req.query.height, req.query.weight, req.query.firstName, req.query.lastName, req.query.teamID, req.query.playerID];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
