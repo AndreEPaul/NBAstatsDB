@@ -35,7 +35,7 @@ module.exports = function(){
         function complete(){
             callbackCount++;
             if(callbackCount >= 2){
-                res.render('players', context);
+                res.render('update-player', context);
             }
 
         }
